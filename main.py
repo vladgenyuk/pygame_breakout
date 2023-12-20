@@ -109,7 +109,8 @@ class Game:
             if not bool(self.block_sprites):
                 score = self.player.hearts * 2 + self.ball.damage
                 print(f"Score: {score}")
-                self.set_score(score)
+                if score > self.get_score():
+                    self.set_score(score)
                 pygame.quit()
                 sys.exit()
 
@@ -156,8 +157,6 @@ class Game:
         click = False
         bg = self.create_bg((WINDOW_WIDTH, WINDOW_HEIGHT), 'images/menu.jpg')
         while True:
-            self.display_hearts()
-            self.display_surface.fill((255, 255, 255))
 
             button_1 = pygame.Rect((WINDOW_WIDTH - 400) // 2, 150, 400, 100)
             button_2 = pygame.Rect((WINDOW_WIDTH - 400) // 2, 300, 400, 100)
